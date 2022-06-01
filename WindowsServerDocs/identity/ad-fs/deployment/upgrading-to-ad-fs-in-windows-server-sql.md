@@ -93,13 +93,13 @@ Prior to this step you need to ensure that forestprep and domainprep have been r
 1. On each Web Application Proxy, re-configure the WAP by executing the following PowerShell command in an elevated window:
     ```powershell
     $trustcred = Get-Credential -Message "Enter Domain Administrator credentials"
-    Install-WebApplicationProxy -CertificateThumbprint {SSLCert} -fsname fsname -FederationServiceTrustCredential $trustcred
+    Install-WebApplicationProxy -CertificateThumbprint {SSLCert} -FederationServiceName fsname -FederationServiceTrustCredential $trustcred
     ```
 2. Remove old servers from the cluster and keep only the WAP servers running the latest server version, which were reconfigured above, by running the following PowerShell command.
     ```powershell
     Set-WebApplicationProxyConfiguration -ConnectedServersName WAPServerName1, WAPServerName2
     ```
-3. Check the WAP configuration by running the Get-WebApplicationProxyConfiguration commmand. The ConnectedServersName will reflect the server run from the prior command.
+3. Check the WAP configuration by running the Get-WebApplicationProxyConfiguration command. The ConnectedServersName will reflect the server run from the prior command.
     ```powershell
     Get-WebApplicationProxyConfiguration
     ```
